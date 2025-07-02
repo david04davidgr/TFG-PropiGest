@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropiGest - Mapa</title>
+    <link rel="icon" type="image/png" href="../favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicons/favicon.svg" />
+    <link rel="shortcut icon" href="../favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="../favicons/site.webmanifest" />    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/95eacc2461.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/vistaMapa.css">
+
+    <!-- Mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <!-- Buscador Mapa -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+</head>
+<body>
+    <aside>
+        <img src="../src/propigestMenuIcon.png" alt="PropiGest" class="iconoMenu">
+        <p class="titulo">PropiGest</p>
+        <div class="menu">
+            <ul>
+                <li><a href="inicio.html"><img src="../src/casa (1).png" alt="Inicio" title="Inicio"></a></li>
+                <li><a href="balances.html"><img src="../src/beneficiarse.png" alt="Balance" title="Balance"></a></li>
+                <li><a href="reservas.html"><img src="../src/inquilino.png" alt="Inquilinos" title="Inquilinos"></a></li>
+                <li><a href="mantenimientos.html"><img src="../src/limpieza.png" alt="Mantenimiento" title="Mantenimiento"></a></li>
+            </ul>
+        </div>
+        <hr width="100%" style="color: #f5f5f5;opacity: 100%;margin: 0;">
+        <div class="logout">
+            <a href="../php/cerrarSesion.php" title="Cerrar Sesión"><i class="fa-solid fa-right-from-bracket fa-flip-horizontal" style="color: #333;"></i></a>
+        </div>
+    </aside>
+    <main>
+        <div id="map">
+            <div class="cont_new_propiedad">
+                <a href="../html/newPropiedad.html" id="new_propiedad">+</a>
+                <div id="text_new_propiedad">
+                    <p>Añadir Propiedad</p>
+                </div>
+            </div>
+            <div class="btn_lista_container">
+                <button id="btn_lista">
+                    <img id="icono" src="../src/right.png" alt="abrir lista">
+                </button>
+            </div>
+        </div>
+        <div class="listaPropiedadesContainer" id="listaPropiedadesContainer">
+            <a class="btn_todas_container" href="../html/inicio.html">
+                <button class="btn_todas"><i class="fa-solid fa-list-ul"></i> Ver todas</button>
+            </a>
+            <ul class="listaPropiedades">
+            </ul>
+        </div>
+    </main>
+    <div class="menuMovil">
+        <div class="nav">
+            <ul class="notalist">
+                <li class="list"><a href="balances.html"><img src="../src/beneficiarse.png" alt="Balance" title="Balance" class="icon-img" width="20px" height="20px"><span class="text">Balance</span></a></li>
+                <li class="list"><a href="reservas.html"><img src="../src/inquilino.png" alt="Reservas" title="Reservas" class="icon-img" width="20px" height="20px"><span class="text">Reservas</span></a></li>
+                <li class="list active floating-home"><a href="inicio.html"><img src="../src/propigestMenuIcon.png" alt="Inicio" class="icon-img" title="Inicio" width="20px" height="20px"><span class="text">Inicio</span></a></li>
+                <li class="list"><a href="mantenimientos.html"><img src="../src/limpieza.png" alt="Mantenimiento" title="Mantenimiento"><span class="text">Mantenimientos</span></a></li>
+                <li class="list"><a href="../php/cerrarSesion.php" title="Cerrar Sesión"><i class="fa-solid fa-right-from-bracket fa-flip-horizontal" style="color: #333;"></i><span class="text">Cerrar Sesión</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../js/mapa.js"></script>
+    <script src="../js/mapaContainer.js"></script>
+</body>
+</html>

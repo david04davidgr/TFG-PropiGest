@@ -1,0 +1,884 @@
+*{
+    padding: 0;
+}
+
+body{
+    display: flex;
+    margin: 0 auto;
+    font-family: 'Lato';
+    overflow: hidden;
+}
+
+aside{
+    position: relative;
+    width: 12vh;
+    height: 100vh;
+    padding: 0.6%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #4CAF50;
+    border-right: 2px solid white;
+
+    .iconoMenu{
+        margin-bottom: -17%;
+    }
+
+    p.titulo{
+        text-align: center;
+        color: #f5f5f5;
+        font-size: 0.75rem;
+        filter: drop-shadow(#333 1px 1px 2px);
+    }
+
+    .menu{
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #f5f5f5;
+
+        ul{
+            width: 100%;
+            padding-left: 0;
+        }
+
+        li{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 1rem;
+            list-style: none;
+            padding: 8%;
+            margin-bottom: 15%;
+            border-radius: 10px;
+
+            a{
+                text-decoration: none;
+                color: #333;
+
+                img{
+                    width: 70%;
+                    padding: 2%;
+                    vertical-align: middle;
+                }
+            }
+
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.603) ;
+            }
+        }
+    }
+
+    .logout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+    }
+}
+
+main {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    #map {
+        position: relative;
+        width: 80%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        z-index: 0;
+
+        /* Estilos buscador */
+        .leaflet-control-geocoder {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80vw;
+            background-color: transparent;
+            z-index: 1000;
+            border: none;
+        }
+        
+        .leaflet-control-geocoder-form {
+            width: 25%;
+            height: 2.25vh;
+            padding: 0.25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border: 2px solid #333;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .leaflet-control-geocoder-form input {
+            width: 100%;
+        }
+        
+        .leaflet-control-geocoder-alternatives {
+            width: 25%;
+            position: absolute;
+            display: block;
+            top: 100%;
+            background-color: #81c784;
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+        
+        .leaflet-control-geocoder-alternatives-minimized {
+            display: none;
+            height: 0;
+            visibility: hidden;
+        }
+        
+        /* Estilo para el contenedor de resultados */
+        .leaflet-control-geocoder-alternatives-list {
+            transform: translateX(-50%); /* Centra los resultados */
+            width: 100%; /* Asegura que tenga el mismo ancho que el input */
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilo para cada resultado individual */
+        .leaflet-control-geocoder-alternatives-list li {
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+        .leaflet-control-geocoder-alternatives-list li:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Contenedor principal (Tarjeta mapa)*/
+        .tarjeta_propiedad {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 120%;
+            background-color: #fff;
+        }
+        
+        /* Popup general de Leaflet */
+        .leaflet-popup-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 120%;
+            padding: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 90vw;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .leaflet-popup-close-button {
+            position: absolute;
+            top: 1.5%;
+            right: -17%;
+            width: 15%;
+            height: auto;
+            font-size: 1.40rem;
+            text-align: center;
+            color: #333;
+            background: none;
+            border-radius: 100%;
+            border: 2px solid #f5f5f5;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover {
+                color: #ff0000;
+                transform: scale(1.05);
+                transition: all 0.3s ease;
+            }
+        }
+
+        /* Imagen dentro del contenedor */
+        .tarjeta_propiedad img {
+            width: 120%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Contenido debajo de la imagen */
+        .tarjeta_propiedad .contenido {
+            /* padding: 1% 1%; */
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.25;
+
+            .status{
+                color: #4CAF50;
+
+                i{
+                    padding-left: 1%;
+                }
+            }
+        }
+
+        .foot_tarjeta{
+            width: 100%;
+            height: 25%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /* Botón personalizado */
+        .btn_container {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .btn_admin{
+            width: 100%;
+            height: 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover{
+                background-color: #45ac47;
+            }
+        }
+
+        /* Hover en el botón */
+        .tarjeta_propiedad .btn:hover {
+            background-color: #45a049;
+        }
+
+        .cont_new_propiedad{
+            width: 25%;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            position: absolute;
+            top: 91vh;
+            left: 0.75%;
+
+            a#new_propiedad{
+                z-index: 999;
+                width: 70px;
+                height: 70px;
+                text-align: center;
+                line-height: 70px;
+                border-radius: 100%;
+                font-size: 2rem;
+                font-weight: bold;
+                text-decoration: none;
+                background-color: #333;
+                color: #f5f5f5;
+                border: 2px solid #4CAF50;
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: #424242;
+                    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+                }
+
+                &:active {
+                    background-color: #1e7e34;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    transform: scale(1);
+                }
+            }
+
+            #text_new_propiedad{
+                opacity: 0;
+                visibility: hidden;
+                z-index: 998;
+                background-color: white;
+                padding: 1%;
+                font-weight: bold;
+                padding-left: 13%;
+                margin-left: -11%;
+                border: 2px solid #333;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                transition: opacity 0.25s ease, visibility 0.25s ease;
+            }
+
+            a#new_propiedad:hover + #text_new_propiedad{
+                opacity: 1;
+                visibility: visible;
+                animation: info 1s forwards;
+            }
+
+            /* @keyframes info {
+                    from{
+                        margin-left:-20%;
+                    }
+                    to{
+                        margin-left: -11%;
+                    }
+            } */
+        }
+
+        .btn_lista_container{
+            position: absolute;
+            right: 0.5%;
+            bottom: 1.80%;
+            z-index: 999;
+
+            button{
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #333;
+                border: 2px solid #45a049;
+                border-radius: 30px;
+            }
+
+        }
+
+        .leaflet-control-layers {
+            position: absolute;
+            right: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            border: 3px solid #81c784;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Cambiar el fondo al pasar el ratón */
+        .leaflet-control-layers:hover {
+            width: 250px;
+            background-color: #45a049;
+        }
+
+        /* Personalizar la lista desplegable */
+        .leaflet-control-layers-list {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Cambiar el estilo de los checkboxes o radios */
+        .leaflet-control-layers input[type="radio"],
+        .leaflet-control-layers input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        /* Cambiar el estilo de los textos de las capas */
+        .leaflet-control-layers label {
+            color: #333333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    }
+
+    .listaPropiedadesContainer{
+        width: 20%;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: center;
+        background-color: #333;
+        border-left: 3px solid #81c784;
+
+        .btn_todas_container{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+
+        }
+        
+        .btn_todas{
+            width: 100%;
+            padding: 2%;
+            outline: none;
+            border: none;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #333;
+            background-color: #81c784;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transition: 0.5s;
+            
+            &:hover{
+                transition: 0.8s ease-in-out;
+                transform: scale(0.99);
+                background-color: #67b36a;
+                cursor: pointer;
+            }
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        .tarjeta_propiedad_aside {
+            position: relative;
+            width: 15vw;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            /* padding-bottom: 12%; */
+            margin-bottom: 4%;
+            
+            img {
+                width: 100%;
+                height: 50%;
+                object-fit: cover;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+        
+            a{
+                width: 50%;
+            }
+            
+            .btn_izqd {
+                width: 100%;
+                height: 5vh;
+                border: none;
+                outline: none;
+                font-size: 0.9vw;
+                font-weight: bold;
+                color: #fff;
+                background-color: #4CAF50;
+                border-bottom-left-radius: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                
+                &:hover {
+                    background-color: #45a049;
+                }
+            }
+            
+            .btn_drch {
+                width: 100%;
+                height: 5vh;
+                border: none;
+                outline: none;
+                font-size: 0.9vw;
+                font-weight: bold;
+                color: #fff;
+                background-color: #4CAF50;
+                border-bottom-right-radius: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                
+                &:hover {
+                    background-color: #45a049;
+                }
+            }
+        
+        }
+
+        .foot_tarjeta{
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            bottom: 0;
+        }
+        
+
+    }
+
+}
+
+/* Menu movil */
+:root {
+  --primary-green: #4CAF50;    /* Verde principal */
+  --secondary-green: #81C784;  /* Verde secundario */
+  --white: #FFFFFF;            /* Fondo */
+  --light-gray: #F5F5F5;       /* Gris claro */
+  --text-dark: #333333;        /* Texto */
+}
+
+/* Menu móvil */
+.menuMovil {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav {
+    width: 300px;
+    height: 70px;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 35px;
+    border: 3px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Iconos normales */
+.nav ul li a img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+.nav ul li a i {
+    width: 35px;
+    height: 35px;
+    font-size: 1.75rem;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+/* Home flotante (círculo verde) */
+.nav ul li.floating-home {
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+
+.nav ul li.floating-home a img {
+    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    padding: 2px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    box-shadow: 
+        0 5px 15px rgba(76, 175, 80, 0.4), /* Sombra verde */
+        0 0 0 8px var(--white);             /* Borde blanco */
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* Texto de los íconos */
+.nav ul li a .text {
+    position: absolute;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover general (para todos los íconos) */
+.nav ul li:hover a img {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a i {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a .text {
+    opacity: 1;
+    transform: translateY(14px);
+}
+
+/* Hover especial para el Home */
+.nav ul li.floating-home:hover a img {
+    transform: translateY(-25px);
+    background: var(--secondary-green); /* Verde más claro al hover */
+    box-shadow: 
+        0 8px 20px rgba(76, 175, 80, 0.6),
+        0 0 0 8px var(--white);
+}
+
+/* Texto del Home (posición ajustada) */
+.nav ul li.floating-home a .text {
+    transform: translateY(25px);
+}
+
+.nav ul li.floating-home:hover a .text {
+    transform: translateY(15px);
+}
+
+/* Ícono activo (verde) */
+.nav ul li.active a img {
+    color: var(--primary-green);
+}
+
+.nav ul li.floating-home.active a img {
+    color: var(--white);
+    background: var(--primary-green);
+}   
+
+/* Responsive */
+/* Móviles pequeños (vertical) */
+@media (max-width: 480px) { 
+
+    body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        display: none;
+    }
+
+    #map{
+        width: 100% !important;
+    }
+
+    .listaPropiedadesContainer{
+        display: none !important;
+        width: 0%;
+    }
+
+    .btn_lista_container{
+        display: none !important;
+    }
+
+    .cont_new_propiedad{
+        width: 50% !important;
+        top: 80% !important;
+    }
+
+    .menuMovil{
+        left: 50%;
+
+        .nav{
+            width: 200px;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+    } 
+}
+
+/* Móviles grandes (horizontal) / Tablets pequeñas */
+@media (min-width: 481px) and (max-width: 768px) {
+    body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        display: none;
+    }
+
+    #map{
+        width: 100% !important;
+    }
+
+    .listaPropiedadesContainer{
+        display: none !important;
+        width: 0%;
+    }
+
+    .btn_lista_container{
+        display: none !important;
+    }
+
+    .cont_new_propiedad{
+        width: 50% !important;
+        top: 80% !important;
+    }
+
+    .menuMovil{
+        left: 50%;
+
+        .nav{
+            width: 350px;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+    } 
+}
+
+/* Tablets (vertical y horizontal) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+   body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        width: 8vw;
+    }
+
+    .propiedadTop{
+        height: 170px !important;
+    }
+
+    .metrica_bar_actividad{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 10%;
+        overflow-x: scroll;
+    } 
+
+    .menuMovil{
+        display: none;
+    } 
+}
+
+/* Pantallas pequeñas (laptops) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+       body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        width: 8vw;
+    }
+
+    .propiedadTop{
+        height: 180px !important;
+    }
+
+    .metrica_bar_actividad{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 10%;
+        overflow-x: scroll;
+    } 
+
+    .menuMovil{
+        display: none;
+    } 
+}
+
+/* Pantallas grandes (desktop) */
+@media (min-width: 1281px) {
+    aside{
+        width: 6vw;
+    }
+
+    .metrica_bar_actividad{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 5% !important;
+        overflow-x: scroll;
+    }
+
+    .menuMovil{
+        display: none;
+    }
+}

@@ -1,0 +1,2035 @@
+body{
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "lato", serif;
+    overflow-x: hidden;
+    background-color: #f5f5f5;
+}
+
+aside{
+    position: fixed;
+    width: 6vw;
+    min-width: 80px;
+    height: 100vh;
+    padding: 0.6%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #4CAF50;
+    border-right: 2px solid white;
+    
+    p.titulo{
+        text-align: center;
+        color: #f5f5f5;
+        font-size: 0.75rem;
+        filter: drop-shadow(#333 1px 1px 2px);
+        margin-bottom: 15%;
+    }
+
+    .menu{
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #f5f5f5;
+
+        ul{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            margin-top: 14%;
+        }
+
+        li{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 1rem;
+            list-style: none;
+            padding: 10%;
+            margin-bottom: 15%;
+            border-radius: 10px;
+
+            a{
+                text-decoration: none;
+                color: #333;
+
+                img{
+                    width: 92%;
+                    padding: 2%;
+                    vertical-align: middle;
+                }
+            }
+
+            &:hover{
+                background-color: rgba(245, 245, 245, 0.75) ;
+            }
+        }
+    }
+
+    .logout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+    }
+}
+
+main{
+    width: 88vw;
+    min-height: 99vh;
+    box-sizing: border-box;
+    margin: 1.75% 4%;
+    margin-left: 10%;
+}
+
+.circular-menu {
+    position: fixed;
+    bottom: 2%;
+    right: 2em;
+    z-index: 3;
+  }
+
+  .circular-menu .floating-btn {
+    display: block;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    background-color: rgb(76, 175, 80);;
+    box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, .26);
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+    line-height: 5em;
+    cursor: pointer;
+    outline: 0;
+    border: 4px solid #f5f5f5;
+  }
+
+  .circular-menu.active .floating-btn {
+    box-shadow: inset 0 0 3px hsla(0, 0%, 0%, .3);
+  }
+
+  .circular-menu .floating-btn:active {
+    box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, .4);
+  }
+
+  .circular-menu .floating-btn i {
+    font-size: 1.3em;
+    transition: transform .2s;
+  }
+
+  .circular-menu.active .floating-btn i {
+    transform: rotate(-45deg);
+  }
+
+  .circular-menu:after {
+    display: block;
+    content: ' ';
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 10%;
+    margin-top: 5%;
+    z-index: -4;
+    background-color: rgb(76, 175, 80);
+    transition: all .3s ease;
+  }
+
+  .circular-menu.active:after {
+    transform: scale3d(6, 5.50, 1);
+    transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
+  }
+
+  .circular-menu .items-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+
+  .circular-menu .menu-item {
+    position: absolute;
+    top: 1.10em;
+    right: 0.20em;
+    z-index: -3;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 3.5em;
+    font-size: 1.08em;
+    background-color: hsla(0,2%,100%,.3);
+    transition: transform .3s ease, background .2s ease;
+  }
+
+  .circular-menu .menu-item:hover {
+    background-color: hsla(0,0%,0%,.3);
+  }
+
+  .circular-menu.active .menu-item {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid #81c784;
+  }
+
+  .circular-menu.active .menu-item:nth-child(1) {
+    transform: translate3d(0.15em,-6.75em,0);
+  }
+
+  .circular-menu.active .menu-item:nth-child(2) {
+    transform: translate3d(-4.80em,-4.65em,0);
+  }
+
+  .circular-menu.active .menu-item:nth-child(3) {
+    transform: translate3d(-6.15em,0.2em,0);
+  }
+
+  /* .circular-menu.active .menu-item:nth-child(4) {
+    transform: translate3d(-7em,0.85em,0);
+  } */
+
+.info_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 20px;
+    border: 6px solid #4CAF50;
+}
+
+.carrusel_imagenes{
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.img_carrusel{
+    width: 95%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+    mask-image: linear-gradient(
+        black 95%,
+        transparent
+    );
+}
+
+.carousel {
+    width: 95%;
+    max-width: 100%;
+}
+
+.carousel-inner {
+    width: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.carousel-control-prev{
+    margin-left: -9%;
+}
+
+.carousel-control-next{
+    margin-right: -9%;
+}
+
+.datos_container{
+    width: 95%;
+    height: auto;
+    min-height: 50vh;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 20px;
+    border: 2px solid #333;
+    background-color: rgb(255, 255, 255);
+
+    hr{
+        width: 60%;
+        border: 0.5px solid #4CAF50;
+        margin: 0 auto;
+        opacity: 100%;
+    }
+}
+
+.datos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    gap: 4%;
+    margin-bottom: 1%;
+    margin-left: 2%;
+
+    &:first-child{
+        margin-top: 3%;
+    }
+
+    h4{
+        font-size: 1.15rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    p{
+        font-size: 1.05rem;
+        font-weight: 300;
+        margin: 0;
+    }
+}
+
+/* Datos column izqd */
+.izqd{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .nombre_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .tipo_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .habitaciones_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .direccion_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+}
+
+/* Datos column centro */
+.centro{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .precio_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .tamanio_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .banios_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .ciudad_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+}
+
+/* Datos column derecha */
+.drch{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .dispo_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .anio_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .plantas_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+
+    .codPostal_info{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5%;
+    }
+}
+
+/* Mapa */
+.map_container{
+    width: 100%;
+    height: 450px;
+    position: relative;
+    z-index: 0;
+}
+
+/* Boton "ver en mapa" */
+.btn_container{
+    position: absolute;
+    width: 10%;
+    height: 30px;
+    top: -6%;
+    left: 14%;
+
+    button{
+        width: 100%;
+        height: 100%;
+        padding: 2%;
+        outline: none;
+        border: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #4CAF50;
+        color: #f5f5f5;
+        font-weight: bold;
+        transition: 0.5s;
+
+        &:hover{
+            background-color: #3e9b3f;
+            cursor: pointer;
+        }
+    }
+}
+
+div#map{
+    width: 72%;
+    height: 90%;
+    margin: 0% auto;
+    margin-top: 5%;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border: 2px solid #4CAF50;
+}
+
+/* Botones pie tarjeta */
+.botones{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    margin-bottom: 1.5%;
+}
+
+.editar{
+    width: 35%;
+    height: 50px;
+    background-color: #14a1ff;
+    outline: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    color: #f5f5f5;
+    font-weight: bold;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.eliminar{
+    width: 35%;
+    height: 50px;
+    background-color: rgba(255, 0, 0, 0.09);
+    outline: none;
+    border: 2px solid red;
+    border-radius: 5px;
+    color: red;
+    font-weight: bold;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 40%;
+}
+
+.formEdicion{
+    margin: 3%;
+}
+
+/* info Balance */
+.balanceContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    hr{
+        margin-bottom: 2%;
+    }
+}
+
+.volverButton{
+    width: 100%;
+    text-align: left;
+    margin-left: 2%;
+    margin-top: 0.5%;
+
+    a{
+        color: #4CAF50;
+        font-weight: bold;
+    }
+}
+
+.datosPrincipales{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid lightgray;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    .balance{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5%;
+        color: #14a1ff;
+        background-color: #f5f5f5;
+        border: 2px solid #14a1ff;
+        border-radius: 10px;
+
+        h4{
+            font-size: 1.50rem;
+            font-weight: lighter;
+            margin: 0;
+        }
+
+        p{
+            font-size: 1.50rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+
+    .ingresos{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5%;
+        color: #4CAF50;
+        background-color: #f5f5f5;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+
+        h4{
+            font-size: 1.50rem;
+            font-weight: lighter;
+            margin: 0;
+        }
+
+        p{
+            font-size: 1.50rem;
+            font-weight: bold;
+            margin: 0;
+        }
+}
+
+    .gastos{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5%;
+        color: red;
+        background-color: #f5f5f5;
+        border: 2px solid red;
+        border-radius: 10px;
+
+        h4{
+            font-size: 1.50rem;
+            font-weight: lighter;
+            margin: 0;
+        }
+
+        p{
+            font-size: 1.50rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+}
+
+.graficosContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    canvas#donutBalance{
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    canvas#barrasVersus{
+        max-width: 700px;
+        max-height: 300px;
+    }
+}
+
+
+.balanceButtons{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    button{
+        width: 25%;
+        height: 40px;
+        font-family: "lato", serif;
+        font-size: 1.15rem;
+        border-radius: 6px;
+    }
+
+    .btnIngreso{
+        background-color: #81c784;
+        color: #f5f5f5;
+        font-weight: bold;
+        border: 3px solid #5eca62;
+        transition: 0.25s;
+
+        &:hover{
+            background-color: #4caf4fc7;
+        }
+    }
+
+    .btnGasto{
+        background-color: rgba(255, 0, 0, 0.548);
+        color: #f5f5f5;
+        font-weight: bold;
+        border: 3px solid red;
+        transition: 0.25s;
+
+        &:hover{
+            background-color: rgba(255, 0, 0, 0.699);
+        }
+    }
+}
+
+.tablaMovimientos{
+    width: 90%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    max-height: 300px;
+    overflow-y: scroll;
+    
+    table#tablaMovimientos{
+        vertical-align: middle;
+        
+        tr>th:first-child{
+            border-top-left-radius: 10px;
+            border: none;
+        }
+
+        tr>th:last-child{
+            border-top-right-radius: 10px;
+            border: none;
+        }
+    }
+
+    .cabeceraTabla>tr>th{
+        background-color: #333;
+        color: #f5f5f5;
+    }
+
+    .cantidadIngreso{
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+    .cantidadGasto{
+        color: red;
+        font-weight: bold;
+    }
+
+    .badge{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+    }
+}
+
+
+tr:hover .acciones {
+    visibility: visible;
+}
+
+.acciones{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+
+    .editar{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .eliminar{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+td.acciones, th.acciones {
+    background-color: inherit !important;
+    border: none;
+  }
+
+form#addIngreso{
+    padding: 5%;
+}
+
+form#addGasto{
+    padding: 5%;
+}
+
+/* Reservas y calendario */
+.reservasContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    hr{
+        margin-bottom: 2%;
+    }
+}
+
+.buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+
+    h3{
+        color: #333;
+        margin: 0;
+    }
+
+    button{
+        padding: 0.5%;
+        background-color: #4CAF50;
+        color: #f5f5f5;
+        font-weight: bold;
+        border: 3px solid #333333bd;
+        border-radius: 5px;
+        transition: 0.25s;
+
+        &:hover{
+            background-color: #337a35;
+        }
+    }
+}
+
+#formReserva{
+    padding: 2%;
+}
+
+textarea#notas{
+    resize: none;
+}
+
+.calendarContainer{
+    margin: 2%;
+    padding: 2%;
+    margin-top: 1%;
+    padding-top: 1%;
+    border: 4px solid #333;
+    border-radius: 10px;
+}
+
+.tablaReservas{
+    width: 90%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    max-height: 300px;
+    overflow-y: scroll;
+
+    tr>th:first-child{
+        border-top-left-radius: 10px;
+        border: none;
+    }
+
+    tr>th:last-child{
+        border-top-right-radius: 10px;
+        border: none;
+    }
+
+    .cabeceraTabla>tr>th{
+        background-color: #333;
+        color: #f5f5f5;
+    }
+
+    .cobro{
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+    td.acciones{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 10%;
+        cursor: pointer;
+
+        .editar{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .eliminar{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.noMantenimientos{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 10px;
+    font-style: italic;
+    margin-top: 2rem;
+    color: #888;
+}
+
+.tarjetasContainer {
+    position: relative;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    max-height: 800px;
+    margin-left: 3%;
+    margin-right: 3%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 #f1f1f1;
+}
+
+/* Tarjeta */
+.tarjeta {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: none;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* EFECTO BORDE IZQUIERDO DINÁMICO */
+.tarjeta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.tarjeta.pendiente::after { background: #F44336; }
+.tarjeta.en-proceso::after { background: #FF9800; }
+.tarjeta.completado::after { background: #4CAF50; }
+.tarjeta.cancelado::after { background: #9E9E9E; }
+
+.tarjeta:hover::after {
+    width: 8px;
+}
+
+/* HEADER DE LA TARJETA */
+.tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.nombre-propiedad {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.tipo-intervencion {
+    margin: 10px 0 15px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* BADGE DE TIPO */
+.tipo-badge {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tipo-badge.correctivo {
+    background: #FFEBEE;
+    color: #F44336;
+}
+
+.tipo-badge.preventivo {
+    background: #E3F2FD;
+    color: #2196F3;
+}
+
+/* CUERPO DE LA TARJETA */
+.titulo-intervencion {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.nombre-empresa {
+    margin: 5px 0 0 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+/* DESCRIPCIÓN */
+.descripcion-intervencion {
+    margin: 15px 0;
+}
+
+.subtitulo {
+    margin: 15px 0 8px 0;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.descripcion-intervencion p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* GRID DE INFORMACIÓN */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.info-item i {
+    color: #4CAF50;
+    font-size: 1.2rem;
+    min-width: 20px;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.info-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.precio {
+    color: #F44336;
+}
+
+/* SISTEMA DE ESTADOS */
+.estado-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.estado-badge.pendiente {
+    background-color: #FFEBEE;
+    color: #F44336;
+}
+
+.estado-badge.en-proceso {
+    background-color: #FFF3E0;
+    color: #FF9800;
+}
+
+.estado-badge.completado {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+}
+
+.estado-badge.cancelado {
+    background-color: #F5F5F5;
+    color: #9E9E9E;
+    text-decoration: line-through;
+}
+
+/* BOTONES Y ENLACES */
+.verDocumentoBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.verDocumentoBtn:hover {
+    background-color: #3d8b40;
+    transform: translateY(-2px);
+}
+
+.sinFactura {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #F44336;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: not-allowed;
+}
+
+/* FECHAS NO ASIGNADAS */
+.fecha-no-asignada {
+    color: #9E9E9E;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* EFECTOS HOVER POR ESTADO */
+.tarjeta.pendiente:hover {
+    box-shadow: 0 6px 12px rgba(244, 67, 54, 0.15);
+}
+
+.tarjeta.en-proceso:hover {
+    box-shadow: 0 6px 12px rgba(255, 152, 0, 0.15);
+}
+
+.tarjeta.completado:hover {
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.15);
+}
+
+.tarjeta.cancelado:hover {
+    box-shadow: 0 6px 12px rgba(158, 158, 158, 0.15);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nombre-propiedad {
+        font-size: 1.2rem;
+    }
+    
+    .tarjeta-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .estado-badge {
+        position: static;
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+
+    .tipo-intervencion {
+        justify-content: center;
+    }
+}
+
+/* SCROLLBAR PARA CONTENEDORES */
+.tarjetasContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tarjetasContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.tarjetasContainer::-webkit-scrollbar-thumb {
+    background-color: #4CAF50;
+    border-radius: 10px;
+}
+
+.tarjetasContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #3d8b40;
+}
+
+.accionesMantenimiento {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.editarMantenimiento, .eliminarMantenimiento {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.editarMantenimiento {
+    color: #2196F3;
+    background-color: #E3F2FD;
+}
+
+.editarMantenimiento:hover {
+    background-color: #BBDEFB;
+    transform: translateY(-2px);
+}
+
+.eliminarMantenimiento {
+    color: #F44336;
+    background-color: #FFEBEE;
+}
+
+.eliminarMantenimiento:hover {
+    background-color: #FFCDD2;
+    transform: translateY(-2px);
+}
+
+/* Efecto al hacer clic */
+.editarMantenimiento:active, .eliminarMantenimiento:active {
+    transform: translateY(0);
+}
+
+/* Menu movil */
+:root {
+  --primary-green: #4CAF50;    /* Verde principal */
+  --secondary-green: #81C784;  /* Verde secundario */
+  --white: #FFFFFF;            /* Fondo */
+  --light-gray: #F5F5F5;       /* Gris claro */
+  --text-dark: #333333;        /* Texto */
+}
+
+/* Menu móvil */
+.menuMovil {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav {
+    width: 300px;
+    height: 70px;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 35px;
+    border: 3px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Iconos normales */
+.nav ul li a img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+.nav ul li a i {
+    width: 35px;
+    height: 35px;
+    font-size: 1.75rem;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+/* Home flotante (círculo verde) */
+.nav ul li.floating-home {
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+
+.nav ul li.floating-home a img {
+    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    padding: 2px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    box-shadow: 
+        0 5px 15px rgba(76, 175, 80, 0.4), /* Sombra verde */
+        0 0 0 8px var(--white);             /* Borde blanco */
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* Texto de los íconos */
+.nav ul li a .text {
+    position: absolute;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover general (para todos los íconos) */
+.nav ul li:hover a img {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a i {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a .text {
+    opacity: 1;
+    transform: translateY(14px);
+}
+
+/* Hover especial para el Home */
+.nav ul li.floating-home:hover a img {
+    transform: translateY(-25px);
+    background: var(--secondary-green); /* Verde más claro al hover */
+    box-shadow: 
+        0 8px 20px rgba(76, 175, 80, 0.6),
+        0 0 0 8px var(--white);
+}
+
+/* Texto del Home (posición ajustada) */
+.nav ul li.floating-home a .text {
+    transform: translateY(25px);
+}
+
+.nav ul li.floating-home:hover a .text {
+    transform: translateY(15px);
+}
+
+/* Ícono activo (verde) */
+.nav ul li.active a img {
+    color: var(--primary-green);
+}
+
+.nav ul li.floating-home.active a img {
+    color: var(--white);
+    background: var(--primary-green);
+}   
+
+/* Responsive */
+/* Móviles pequeños (vertical) */
+@media (max-width: 480px) { 
+
+    body{
+        overflow-y: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside{
+        display: none;
+    }
+
+    main{
+        margin: 0;
+    }
+
+    .infoContainer{
+        height: auto;
+    }
+
+    .datos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .izqd{
+            width: 100%;
+
+            .nombre_info{
+                width: 100%;
+            }
+
+            .tipo_info{
+                width: 100%;
+            }
+
+            .habitaciones_info{
+                width: 100%;
+            }
+
+            .direccion_info{
+                width: 100%;
+            }
+        }
+
+        .centro{
+            width: 100%;
+
+            .precio_info{
+                width: 100%;
+            }
+
+            .tamanio_info{
+                width: 100%;
+            }
+
+            .banios_info{
+                width: 100%;
+            }
+
+            .ciudad_info{
+                width: 100%;
+            }
+        }
+
+        .drch{
+            width: 100%;
+
+            .dispo_info{
+                width: 100%;
+            }
+
+            .anio_info{
+                width: 100%;
+            }
+            
+            .plantas_info{
+                width: 100%;
+            }
+
+            .codPostal_info{
+                width: 100%;
+                margin-bottom: 10%;
+            }
+        }
+    }
+
+    .map_container{
+        margin-top: 2%;
+
+        .btn_container{
+            width: 72%;
+        }
+
+        div#map{
+            border-top-right-radius: 0;
+        }
+    }
+
+    .circular-menu{
+        bottom: 0;
+        right: 0;
+    }
+
+    .botones{
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 25%;
+
+        .editar{
+            width: 90%;
+        }
+
+        .eliminar{
+            width: 90%;
+            margin-bottom: 10%;
+        }
+    }
+
+    /* Botones menú */
+    .circular-menu {
+        position: fixed;
+        top: 50%;
+        right: 0em;
+        z-index: 3;
+    }
+
+    .circular-menu.active:after{
+        transform: scale3d(5, 4.50, 1);
+    }
+
+    a#balanceButton{
+        right: 75%;
+        top: -15%;
+    }
+
+    a#reservaButton{
+        right: 120%;
+        top: 2%;
+    }
+
+    a#mantenimientoButton{
+        right: 73%;
+        top: 19%;
+    }
+
+    .circular-menu .menu-item {
+        pointer-events: none;      /* Desactiva clics por defecto */
+        opacity: 0;                /* Los hace invisibles */
+        transform: none !important; /* Elimina cualquier posición previa al cerrar */
+        transition: 
+        transform 0.3s ease,
+        background 0.2s ease,
+        opacity 0.3s ease;
+    }
+
+    .circular-menu.active .menu-item {
+        pointer-events: auto;      /* Activa clics cuando está abierto */
+        opacity: 1;                /* Los hace visibles */
+    }
+
+    /* Balances */
+    .datosPrincipales{
+        width: 90%;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 5%;
+
+        .balance{
+            width: 100%;
+        }
+
+        .ingresos{
+            width: 100%;
+        }
+
+        .gastos{
+            width: 100%;
+        }
+    }
+
+    .graficosContainer{
+        width: 90%;
+        flex-direction: column;
+
+        canvas#barrasVersus{
+            max-height: 300px;
+        }
+    }
+
+    .balanceButtons{
+        flex-direction: column;
+        gap: 7px;
+        margin-top: 5%;
+        margin-bottom: 5%;
+
+        .btnIngreso{
+            width: 90%;
+        }
+
+        .btnGasto{
+            width: 90%;
+        }
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.2em !important;
+    }
+
+    .fc-button-group{
+        display: none;
+    }
+    
+    .fc-button {
+        padding: 0.3em 0.4em !important;
+        font-size: 0.8em !important;
+    }
+    
+    .fc-daygrid-day-number {
+        font-size: 0.8em;
+    }
+
+    .tablaMovimientos{
+        height: auto !important;
+        margin-bottom: 30%;
+        overflow-x: scroll;
+    }
+
+    /* Reservas */
+    
+    .tablaReservas{
+        height: auto !important;
+        margin-bottom: 30%;
+        overflow-x: scroll;
+    }
+
+    /* Mantenimientos */
+    .buttonContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tarjetasContainer{
+        grid-template-columns: auto;
+        margin-bottom: 25%;
+    }
+
+    .menuMovil{
+        left: 51%;
+
+        .nav ul{
+            align-items: normal;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+    } 
+}
+
+/* Móviles grandes (horizontal) / Tablets pequeñas */
+@media (min-width: 481px) and (max-width: 768px) {
+   body{
+        overflow-y: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside{
+        display: none;
+    }
+
+    main{
+        margin: 0;
+    }
+
+    .infoContainer{
+        height: auto;
+    }
+
+    .datos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .izqd{
+            width: 100%;
+
+            .nombre_info{
+                width: 100%;
+            }
+
+            .tipo_info{
+                width: 100%;
+            }
+
+            .habitaciones_info{
+                width: 100%;
+            }
+
+            .direccion_info{
+                width: 100%;
+            }
+        }
+
+        .centro{
+            width: 100%;
+
+            .precio_info{
+                width: 100%;
+            }
+
+            .tamanio_info{
+                width: 100%;
+            }
+
+            .banios_info{
+                width: 100%;
+            }
+
+            .ciudad_info{
+                width: 100%;
+            }
+        }
+
+        .drch{
+            width: 100%;
+
+            .dispo_info{
+                width: 100%;
+            }
+
+            .anio_info{
+                width: 100%;
+            }
+            
+            .plantas_info{
+                width: 100%;
+            }
+
+            .codPostal_info{
+                width: 100%;
+                margin-bottom: 10%;
+            }
+        }
+    }
+
+    .map_container{
+        margin-top: 2%;
+
+        .btn_container{
+            width: 72%;
+        }
+
+        div#map{
+            border-top-right-radius: 0;
+        }
+    }
+
+    .circular-menu{
+        bottom: 0;
+        right: 0;
+    }
+
+    .botones{
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15%;
+
+        .editar{
+            width: 90%;
+        }
+
+        .eliminar{
+            width: 90%;
+            margin-bottom: 10%;
+        }
+    }
+
+    /* Botones menú */
+    .circular-menu {
+        position: fixed;
+        top: 50%;
+        right: 0em;
+        z-index: 3;
+    }
+
+    .circular-menu.active:after{
+        transform: scale3d(5, 4.50, 1);
+    }
+
+    a#balanceButton{
+        right: 75%;
+        top: -15%;
+    }
+
+    a#reservaButton{
+        right: 120%;
+        top: 2%;
+    }
+
+    a#mantenimientoButton{
+        right: 73%;
+        top: 19%;
+    }
+
+    .circular-menu .menu-item {
+        pointer-events: none;      /* Desactiva clics por defecto */
+        opacity: 0;                /* Los hace invisibles */
+        transform: none !important; /* Elimina cualquier posición previa al cerrar */
+        transition: 
+        transform 0.3s ease,
+        background 0.2s ease,
+        opacity 0.3s ease;
+    }
+
+    .circular-menu.active .menu-item {
+        pointer-events: auto;      /* Activa clics cuando está abierto */
+        opacity: 1;                /* Los hace visibles */
+    }
+
+    /* Balances */
+    .datosPrincipales{
+        width: 90%;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 5%;
+
+        .balance{
+            width: 100%;
+        }
+
+        .ingresos{
+            width: 100%;
+        }
+
+        .gastos{
+            width: 100%;
+        }
+    }
+
+    .graficosContainer{
+        width: 90%;
+        flex-direction: column;
+
+        canvas#barrasVersus{
+            max-height: 300px;
+        }
+    }
+
+    .balanceButtons{
+        flex-direction: column;
+        gap: 7px;
+        margin-top: 5%;
+        margin-bottom: 5%;
+
+        .btnIngreso{
+            width: 90%;
+        }
+
+        .btnGasto{
+            width: 90%;
+        }
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.2em !important;
+    }
+
+    .fc-button-group{
+        display: none;
+    }
+    
+    .fc-button {
+        padding: 0.3em 0.4em !important;
+        font-size: 0.8em !important;
+    }
+    
+    .fc-daygrid-day-number {
+        font-size: 0.8em;
+    }
+
+    .tablaMovimientos{
+        height: auto !important;
+        margin-bottom: 30%;
+        overflow-x: scroll;
+    }
+
+    /* Reservas */
+    
+    .tablaReservas{
+        height: auto !important;
+        margin-bottom: 20%;
+        overflow-x: scroll;
+    }
+
+    /* Mantenimientos */
+    .buttonContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tarjetasContainer{
+        grid-template-columns: auto;
+        margin-bottom: 15%;
+    }
+
+    .menuMovil{
+        left: 51%;
+
+        .nav ul{
+            align-items: normal;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+    } 
+}
+
+/* Tablets (vertical y horizontal) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+   body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        width: 8vw;
+    }
+
+    .info_container{
+        margin-left: 1.5%;
+    }
+
+    .propiedadTop{
+        height: 170px !important;
+    }
+
+    .metrica_bar_actividad{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .graficosContainer{
+        width: 90%;
+        flex-direction: column;
+
+        canvas#barrasVersus{
+            max-height: 300px;
+        }
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 10%;
+        overflow-x: scroll;
+    } 
+
+    .menuMovil{
+        display: none;
+    } 
+}
+
+/* Pantallas pequeñas (laptops) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+       body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        width: 8vw;
+    }
+
+    .graficosContainer{
+        width: 90%;
+        flex-direction: column;
+
+        canvas#barrasVersus{
+            max-height: 300px;
+        }
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 10%;
+        overflow-x: scroll;
+    } 
+
+    .menuMovil{
+        display: none;
+    } 
+}
+
+/* Pantallas grandes (desktop) */
+@media (min-width: 1281px) {
+    aside{
+        width: 6vw;
+    }
+
+    .tablaReservas{
+        height: auto !important;
+        padding-bottom: 5% !important;
+        overflow-x: scroll;
+    }
+
+    .menuMovil{
+        display: none;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropiGest - Registro</title>
+    <link rel="icon" type="image/png" href="../favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicons/favicon.svg" />
+    <link rel="shortcut icon" href="../favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="../favicons/site.webmanifest" />    <link rel="stylesheet" href="../css/registro.css">
+</head>
+<body>
+    <div class="register-section">
+        <div class="register-container">
+            <div class="logo">
+                <img src="../favicons/favicon.svg" alt="Logo PropiGest">
+                <h1>PropiGest</h1>
+            </div>
+            <form class="register-form" id="registerForm">
+                <div class="nombreApellidos">
+                    <div class="form-group nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="nombre" maxlength="50" required>
+                    </div>
+                    <div class="form-group apellidos">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="apellidos" maxlength="100" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="user@email.com" maxlength="254" required>
+                </div>
+                <div class="contraseniasContainer">
+                    <div class="form-group contrasenia">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" minlength="8" maxlength="64" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,64}" 
+                            title="Debe tener al menos una mayúscula, una minúscula, un número y un símbolo" required>
+                    </div>
+                    <div class="form-group confirmContrasenia">
+                        <label for="confirmPassword">Confirmar contraseña</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" maxlength="64" placeholder="••••••••" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,64}" 
+                            title="Debe tener al menos una mayúscula, una minúscula, un número y un símbolo" required>
+                    </div>
+                </div>
+                <div class="telDireccion">
+                    <div class="form-group tel">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" name="telefono" pattern="^[6-9][0-9]{8}$" title="Debe empezar por 6, 7, 8 o 9 y tener 9 dígitos" maxlength="9" required>
+                    </div>
+                    <div class="form-group direccion">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" name="direccion" maxlength="100" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-register">Registrarme</button>
+                <div id="errorMensaje" class="error-message" style="color:red; margin-top: 10px;"></div>
+                <div class="registro">
+                    <a href="../index.html">Ya tengo cuenta, iniciar sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>DGR © 2025</footer>
+    <script src="../js/registro.js"></script>
+</body>
+</html>

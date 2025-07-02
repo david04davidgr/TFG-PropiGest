@@ -1,0 +1,555 @@
+body{
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "lato", serif;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+
+aside{
+    position: fixed;
+    width: 12vh;
+    height: 100vh;
+    padding: 0.6%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #4CAF50;
+    border-right: 2px solid white;
+    z-index: 1;
+
+    p.titulo{
+        text-align: center;
+        color: #f5f5f5;
+        font-size: 0.75rem;
+        filter: drop-shadow(#333 1px 1px 2px);
+    }
+
+    .menu{
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #f5f5f5;
+
+        ul{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            margin-top: 15%;
+        }
+
+        li{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 1rem;
+            list-style: none;
+            padding: 10%;
+            margin-bottom: 15%;
+            border-radius: 10px;
+
+            a{
+                text-decoration: none;
+                color: #333;
+
+                img{
+                    width: 85%;
+                    padding: 2%;
+                    vertical-align: middle;
+                }
+            }
+
+            &:hover{
+                background-color: rgba(245, 245, 245, 0.75) ;
+            }
+        }
+
+        li#activo{
+            background-color: rgba(245, 245, 245, 0.75);
+        }
+    }
+
+    .logout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+    }
+}
+
+main{
+    position: relative;
+    width: 98vw;
+    height: 100vh;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.formContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    height: 150vh;
+    background-image: url(../src/fondoNewPropiedad.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3.5px);
+    z-index: -1;
+}
+
+form {
+    background-color: #f5f5f5;
+    width: 50%;
+    max-width: 600px;
+    /* height: auto; */
+    margin: 5vh auto;
+    position: relative;
+    /* left: 25%; */
+    padding: 1rem;
+    margin-top: 2.5%;
+    border-radius: 20px;
+    border: 2px solid #4CAF50;
+}
+
+.file-upload {
+    border: 2px dashed #198754;
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.file-upload input[type="file"] {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
+#preview{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2%;
+    padding: 1% 0;
+
+    .imgPreview{
+        position: relative;
+
+        img{
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        button{
+            position: absolute;
+            top: 5%;
+            right: 3%;
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+
+.modal {
+    margin-top: 20vh;
+}
+
+.modal-content{
+    height: 65vh;
+}
+
+#map {
+    width: 100%;
+    height: 50vh;
+    /* Control de capas */
+
+        .leaflet-control-layers{
+            background-color: #333;
+            color: white;
+            border: 3px solid #81c784;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cambiar el fondo al pasar el ratón */
+        .leaflet-control-layers:hover {
+            background-color: #45a049;
+        }
+
+        /* Personalizar la lista desplegable */
+        .leaflet-control-layers-list {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Cambiar el estilo de los checkboxes o radios */
+        .leaflet-control-layers input[type="radio"],
+        .leaflet-control-layers input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
+        /* Cambiar el estilo de los textos de las capas */
+        .leaflet-control-layers label {
+            color: #333333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+}
+
+/* Menu movil */
+:root {
+  --primary-green: #4CAF50;    /* Verde principal */
+  --secondary-green: #81C784;  /* Verde secundario */
+  --white: #FFFFFF;            /* Fondo */
+  --light-gray: #F5F5F5;       /* Gris claro */
+  --text-dark: #333333;        /* Texto */
+}
+
+/* Menu móvil */
+.menuMovil {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav {
+    width: 300px;
+    height: 70px;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 35px;
+    border: 3px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Iconos normales */
+.nav ul li a img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+.nav ul li a i {
+    width: 35px;
+    height: 35px;
+    font-size: 1.75rem;
+    object-fit: contain;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    transform: translateY(0);
+}
+
+/* Home flotante (círculo verde) */
+.nav ul li.floating-home {
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+
+.nav ul li.floating-home a img {
+    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    padding: 2px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    box-shadow: 
+        0 5px 15px rgba(76, 175, 80, 0.4), /* Sombra verde */
+        0 0 0 8px var(--white);             /* Borde blanco */
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* Texto de los íconos */
+.nav ul li a .text {
+    position: absolute;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover general (para todos los íconos) */
+.nav ul li:hover a img {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a i {
+    color: var(--primary-green);
+    transform: translateY(-10px);
+}
+
+.nav ul li:hover a .text {
+    opacity: 1;
+    transform: translateY(14px);
+}
+
+/* Hover especial para el Home */
+.nav ul li.floating-home:hover a img {
+    transform: translateY(-25px);
+    background: var(--secondary-green); /* Verde más claro al hover */
+    box-shadow: 
+        0 8px 20px rgba(76, 175, 80, 0.6),
+        0 0 0 8px var(--white);
+}
+
+/* Texto del Home (posición ajustada) */
+.nav ul li.floating-home a .text {
+    transform: translateY(25px);
+}
+
+.nav ul li.floating-home:hover a .text {
+    transform: translateY(15px);
+}
+
+/* Ícono activo (verde) */
+.nav ul li.active a img {
+    color: var(--primary-green);
+}
+
+.nav ul li.floating-home.active a img {
+    color: var(--white);
+    background: var(--primary-green);
+}
+
+/* Responsive */
+/* Móviles pequeños (vertical) */
+@media (max-width: 480px) { 
+
+    body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        display: none;
+    }
+
+    main{
+        width: 100% !important;
+        height: auto;
+        display: block;
+        min-height: 100%;
+        margin: 0;
+    }
+
+    .formContainer{
+        position: initial;
+    }
+
+    form#propiedadForm{
+        width: 90%;
+        margin-bottom: 30%;
+    }
+
+    .menuMovil{
+        left: 50%;
+
+        .nav{
+            width: 250px;
+        }
+
+        .nav ul{
+            align-items: normal;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+
+        li:first-child{
+            margin-left: 5%;
+        }
+
+    }
+}
+
+/* Móviles grandes (horizontal) / Tablets pequeñas */
+@media (min-width: 481px) and (max-width: 768px) {
+       body{
+        overflow-y: auto;
+        height: auto;
+    }
+
+    aside{
+        display: none;
+    }
+
+    main{
+        width: 100% !important;
+        height: auto;
+        display: block;
+        min-height: 100%;
+        margin: 0;
+    }
+
+    .formContainer{
+        position: initial;
+    }
+
+    form#propiedadForm{
+        width: 90%;
+        margin-bottom: 30%;
+    }
+
+    .menuMovil{
+        left: 50%;
+
+        .nav{
+            width: 350px;
+        }
+
+        .nav ul{
+            align-items: normal;
+        }
+
+        .nav ul li.floating-home{
+            align-items: flex-start;
+        }
+
+        li:first-child{
+            margin-left: 5%;
+        }
+
+    }
+}
+
+/* Tablets (vertical y horizontal) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    aside{
+        width: 8vw;
+    }
+
+   
+    main{
+        width: 100% !important;
+        height: auto;
+        display: block;
+        min-height: 100%;
+        margin: 0;
+    }
+
+    .formContainer{
+        position: initial;
+    }
+
+    form#propiedadForm{
+        width: 90%;
+        margin-bottom: 30%;
+    }
+
+    .menuMovil{
+        display: none;
+    }
+}
+
+/* Pantallas pequeñas (laptops) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    aside{
+        width: 8vw;
+    }
+
+
+
+    .menuMovil{
+        display: none;
+    }
+}
+
+/* Pantallas grandes (desktop) */
+@media (min-width: 1281px) {
+    aside{
+        width: 6vw;
+    }
+
+    .menuMovil{
+        display: none;
+    }
+}
